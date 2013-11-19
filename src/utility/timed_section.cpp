@@ -9,7 +9,7 @@
 static void wrapped_clock_gettime(timespec *ts) {
     clock_serv_t cclock;
     mach_timespec_t mts;
-    host_get_clock_service(mach_host_self(), CALENDAR_CLOCK, &cclock);
+    host_get_clock_service(mach_host_self(), SYSTEM_CLOCK, &cclock);
     clock_get_time(cclock, &mts);
     mach_port_deallocate(mach_task_self(), cclock);
     ts->tv_sec = mts.tv_sec;
@@ -19,7 +19,7 @@ static void wrapped_clock_gettime(timespec *ts) {
 #else
 
 static void wrapped_clock_gettime(timespec *ts) {
-    clock_gettime(CLOCK_REALTIME, &ts);
+    clock_gettime(CLOCK_MONOTONIC, &ts);
 }
 
 #endif
