@@ -1,4 +1,5 @@
 #include <bitcoin/error.hpp>
+#include <string>
 
 namespace libbitcoin {
 

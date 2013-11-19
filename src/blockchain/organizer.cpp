@@ -201,7 +201,7 @@ void organizer::replace_chain(int fork_index,
     {
         orphans_->remove(arrival_block);
         ++arrival_index;
-        arrival_block->set_info({block_status::confirmed, arrival_index});
+        arrival_block->set_info({block_status::confirmed, static_cast<size_t>(arrival_index)});
         chain_->add(arrival_block);
     }
     // Now add the old blocks back to the pool
